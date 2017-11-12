@@ -11,9 +11,10 @@
 #pragma once
 
 #include <string>
-#include <Python/Python.h>
+//#include <Python/Python.h>
 
 #include <EssexEngineCore/BaseDriver.h>
+#include <EssexEngineCore/LogDaemon.h>
 #include <EssexEngineCore/Context.h>
 #include <EssexEngineScriptDaemon/IScriptDriver.h>
 
@@ -28,8 +29,8 @@ namespace Python{
             
             //IDriver
             void Init() {
-                if(GetContext()->HasDriver<Core::Logging::ILogDriver>()) {
-                    GetContext()->GetDriver<Core::Logging::ILogDriver>()->LogLine(
+                if(GetContext()->HasDaemon<Core::Logging::LogDaemon>()) {
+                    GetContext()->GetDaemon<Core::Logging::LogDaemon>()->LogLine(
                         "Loading Driver [%s] [%s]",
                         GetDriverName().c_str(),
                         GetDriverVersion().c_str()

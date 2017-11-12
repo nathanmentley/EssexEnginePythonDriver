@@ -16,13 +16,13 @@ EssexEngine::Drivers::Python::PythonDriver::PythonDriver(WeakPointer<Context> _c
 EssexEngine::Drivers::Python::PythonDriver::~PythonDriver() { }
 
 void EssexEngine::Drivers::Python::PythonDriver::InitScripting() {
-    Py_SetProgramName("GameEngine");  // optional but recommended
-    Py_Initialize();
-    PyRun_SimpleString("from time import time,ctime\n");
+    //Py_SetProgramName("GameEngine");  // optional but recommended
+    //Py_Initialize();
+    //PyRun_SimpleString("from time import time,ctime\n");
 }
 void EssexEngine::Drivers::Python::PythonDriver::ExecuteScript(std::string script) {
-    PyRun_SimpleString(script.c_str());
+    //PyRun_SimpleString(script.c_str());
 }
 void EssexEngine::Drivers::Python::PythonDriver::DeinitScripting() {
-    Py_Finalize();
+    //Py_Finalize();
 }
