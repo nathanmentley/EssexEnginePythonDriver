@@ -11,10 +11,16 @@
 
 #include <EssexEnginePythonDriver/PythonDriver.h>
 
+using EssexEngine::Context;
+using EssexEngine::WeakPointer;
+
+using EssexEngine::Drivers::Python::PythonDriver;
+using EssexEngine::Daemons::Script::IScriptDriver;
+
 extern "C" {
-    void driver_init(EssexEngine::Context* context) {
-        EssexEngine::Drivers::Python::PythonDriver* pythonDriver = new EssexEngine::Drivers::Python::PythonDriver(context);
-        
-        context->RegisterDriver<EssexEngine::Daemons::Script::IScriptDriver>(pythonDriver);
+    void driver_init(WeakPointer<Context> context) {
+        context->RegisterDriver<IScriptDriver>(
+            WeakPointer<IScriptDriver>(new PythonDriver(context)) 
+        );
     }
 }
